@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>js实现深拷贝 | 林中茑屋</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="dns-prefetch" href="https://s2.loli.net">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <meta name="description" content="茑屋搭建中...">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="baidu-site-verification" content="code-CekZJFvXZM">
+    <meta name="keywords" content="博客_vuepress搭建个人博客_reco主题">
+    
+    <link rel="preload" href="/assets/css/0.styles.8b1062e5.css" as="style"><link rel="preload" href="/assets/js/app.18db920d.js" as="script"><link rel="preload" href="/assets/js/6.9d1223ac.js" as="script"><link rel="preload" href="/assets/js/19.19239efa.js" as="script"><link rel="preload" href="/assets/js/14.ff13c764.js" as="script"><link rel="prefetch" href="/assets/js/1.87f141aa.js"><link rel="prefetch" href="/assets/js/10.c5e5a085.js"><link rel="prefetch" href="/assets/js/11.22659a0c.js"><link rel="prefetch" href="/assets/js/12.459aa022.js"><link rel="prefetch" href="/assets/js/13.b494e2d8.js"><link rel="prefetch" href="/assets/js/15.ef262d99.js"><link rel="prefetch" href="/assets/js/16.67ab03eb.js"><link rel="prefetch" href="/assets/js/17.3fd80cdb.js"><link rel="prefetch" href="/assets/js/18.6803ffc4.js"><link rel="prefetch" href="/assets/js/2.32183b41.js"><link rel="prefetch" href="/assets/js/20.76026ec0.js"><link rel="prefetch" href="/assets/js/21.c67da420.js"><link rel="prefetch" href="/assets/js/22.f831967b.js"><link rel="prefetch" href="/assets/js/23.98b7eb21.js"><link rel="prefetch" href="/assets/js/24.486ec02f.js"><link rel="prefetch" href="/assets/js/25.4fee760f.js"><link rel="prefetch" href="/assets/js/26.b444d2f9.js"><link rel="prefetch" href="/assets/js/27.e1b7f0cb.js"><link rel="prefetch" href="/assets/js/28.21f0c69c.js"><link rel="prefetch" href="/assets/js/29.6182ef63.js"><link rel="prefetch" href="/assets/js/3.09159d2a.js"><link rel="prefetch" href="/assets/js/30.88270bcd.js"><link rel="prefetch" href="/assets/js/5.15479ab9.js"><link rel="prefetch" href="/assets/js/7.bf80ae74.js"><link rel="prefetch" href="/assets/js/8.1593daf0.js"><link rel="prefetch" href="/assets/js/9.36930cbf.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8b1062e5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-26977a36><div data-v-26977a36><div id="loader-wrapper" class="loading-wrapper" data-v-76bb6480 data-v-26977a36 data-v-26977a36><!----> <div class="loadingImageContainer" data-v-76bb6480><img src="/assets/img/pikachu-running.c05c8686.gif" data-v-76bb6480></div></div> <div class="hide" data-v-26977a36><header class="navbar" data-v-26977a36><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="林中茑屋" class="logo"> <span class="site-name">林中茑屋</span></a> <div class="links"><div id="dayNightSwitch" class="generalWrapper" data-v-a2a61cea><a class="click" data-v-a2a61cea><div class="onOff daySwitch" data-v-a2a61cea><div class="star star1" data-v-a2a61cea></div> <div class="star star2" data-v-a2a61cea></div> <div class="star star3" data-v-a2a61cea></div> <div class="star star4" data-v-a2a61cea></div> <div class="star star5" data-v-a2a61cea></div> <div class="star sky" data-v-a2a61cea></div> <div class="sunMoon" data-v-a2a61cea><div class="crater crater1" data-v-a2a61cea></div> <div class="crater crater2" data-v-a2a61cea></div> <div class="crater crater3" data-v-a2a61cea></div> <div class="cloud part1" data-v-a2a61cea></div> <div class="cloud part2" data-v-a2a61cea></div></div></div></a></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <div class="navLinksContainer can-hide"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper open"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow down"></span></a> <ul class="nav-dropdown"><li class="dropdown-item"><!----> <a href="/categories/HTTP/" class="nav-link"><i class="undefined"></i>
+  HTTP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JS/" class="nav-link"><i class="undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Router/" class="nav-link"><i class="undefined"></i>
+  Router
+</a></li><li class="dropdown-item"><!----> <a href="/categories/TypeScript/" class="nav-link"><i class="undefined"></i>
+  TypeScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/ES5/" class="nav-link"><i class="undefined"></i>
+  ES5
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/网站搭建相关/" class="nav-link"><i class="undefined"></i>
+  网站搭建相关
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue2/" class="nav-link"><i class="undefined"></i>
+  Vue2
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><div class="dropdown-wrapper open"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      前端
+    </span> <span class="arrow down"></span></a> <ul class="nav-dropdown"><li class="dropdown-item"><!----> <a href="/docs/" class="nav-link"><i class="undefined"></i>
+  记事本
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper open"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      关于
+    </span> <span class="arrow down"></span></a> <ul class="nav-dropdown"><li class="dropdown-item"><!----> <a href="https://github.com/WilsonXinxin" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div> <!----></nav></div></div></header> <div class="sidebar-mask" data-v-26977a36></div> <aside class="sidebar" data-v-26977a36><div class="personal-info-wrapper" data-v-6270df8a data-v-26977a36><img src="/avatar.png" alt="author-avatar" class="personal-img" data-v-6270df8a> <h3 class="name" data-v-6270df8a>
+    wilson
+  </h3> <div class="num" data-v-6270df8a><div data-v-6270df8a><h3 data-v-6270df8a>13</h3> <h6 data-v-6270df8a>Articles</h6></div> <div data-v-6270df8a><h3 data-v-6270df8a>10</h3> <h6 data-v-6270df8a>Tags</h6></div></div> <ul class="social-links" data-v-6270df8a></ul> <hr data-v-6270df8a></div> <div class="navLinksContainer"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper open"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow down"></span></a> <ul class="nav-dropdown"><li class="dropdown-item"><!----> <a href="/categories/HTTP/" class="nav-link"><i class="undefined"></i>
+  HTTP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JS/" class="nav-link"><i class="undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Router/" class="nav-link"><i class="undefined"></i>
+  Router
+</a></li><li class="dropdown-item"><!----> <a href="/categories/TypeScript/" class="nav-link"><i class="undefined"></i>
+  TypeScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/ES5/" class="nav-link"><i class="undefined"></i>
+  ES5
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/网站搭建相关/" class="nav-link"><i class="undefined"></i>
+  网站搭建相关
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue2/" class="nav-link"><i class="undefined"></i>
+  Vue2
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><div class="dropdown-wrapper open"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      前端
+    </span> <span class="arrow down"></span></a> <ul class="nav-dropdown"><li class="dropdown-item"><!----> <a href="/docs/" class="nav-link"><i class="undefined"></i>
+  记事本
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper open"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      关于
+    </span> <span class="arrow down"></span></a> <ul class="nav-dropdown"><li class="dropdown-item"><!----> <a href="https://github.com/WilsonXinxin" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div> <!----></nav></div> <!----> </aside> <div data-v-26977a36><main class="page" style="padding-right:0;"><section><div class="page-title"><h1 class="title">js实现深拷贝</h1> <div data-v-23d2444c><i class="iconfont reco-account" data-v-23d2444c><span data-v-23d2444c>wilson</span></i> <i class="iconfont reco-date" data-v-23d2444c><span data-v-23d2444c>9/21/2022</span></i> <i class="iconfont reco-eye" data-v-23d2444c><span id="/blogs/notes/JS/deepClone.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-23d2444c><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="tags iconfont reco-tag" data-v-23d2444c><span class="tag-item" data-v-23d2444c>JS</span></i></div></div> <div class="theme-reco-content content__default"><div class="custom-block tip"><p class="title">摘要</p><p>记录JS中实现深拷贝的原理<br></p></div> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 复杂数据结构，处理深拷贝，object1 =&gt; clonedObject 属性修改, 互不影响</span>
+<span class="token keyword">let</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">array</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">arrayOfObj</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">4</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">obj</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token number">5</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">fn</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">reg</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">7</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+
+  <span class="token comment">// ES6 Map, Set</span>
+  <span class="token literal-property property">map</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">set</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+  <span class="token literal-property property">num</span><span class="token operator">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">nulVal</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">// JS中null是属于对象, 有点bug</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 出现循环引用, 这种情况是可以发生的，就如数据结构中的循环链表，每个节点node就是一个object</span>
+<span class="token comment">// 这里obj1 和 obj2 互相引用</span>
+<span class="token keyword">let</span> obj2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+obj2<span class="token punctuation">.</span>to  <span class="token operator">=</span> obj1
+obj1<span class="token punctuation">.</span>to <span class="token operator">=</span>  obj2
+
+<span class="token comment">// JSON序列化 =&gt; 反序列化 =&gt; 序列化</span>
+<span class="token keyword">let</span> cloned <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;JSON序列化以后&quot;</span><span class="token punctuation">,</span> cloned<span class="token punctuation">)</span>
+<span class="token comment">// 我们会发现 function, RegExp, Set, Map,没有拷贝过来，【因为这些是JSON中本不存在的数据类型】</span>
+
+<span class="token comment">// 使用工具库 lodash underscore, 这类是第三方的工具库, 实际工作中可能需要我们呢自己封装</span>
+
+<span class="token comment">// 定义缓存map</span>
+<span class="token comment">// 使用WeakMap是为了使用弱引用，避免对象已经清理, 而map中对于对象的引用未清除的情况</span>
+<span class="token keyword">let</span> cached <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">function</span> <span class="token function">deepClone</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 宏观思维, 处理不同类型， 两大分类：基本 + 引用</span>
+  <span class="token comment">// 注意null也是对象</span>
+  <span class="token comment">// 基本数据类型 + null + function name(params)</span>
+  <span class="token comment">// 注意！  !null 是输出true, 所以这里需要加上!obj这个判断</span>
+  <span class="token comment">// 同理 !obj 还可以判断 undefined, 空串</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> obj <span class="token operator">!=</span> <span class="token string">'object'</span> <span class="token operator">||</span> <span class="token operator">!</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> obj
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 判断是否缓存中有值，如果有，返回处理后的值，不向下执行，避免无限递归</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>cached<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> cached<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+
+  <span class="token comment">// 大致规则是es6之后的类型判断很多都能使用instanceof</span>
+  <span class="token comment">// 判断正则表达式类型</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token keyword">instanceof</span> <span class="token class-name">RegExp</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> tmp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+    cached<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> tmp
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 判断Map类型</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token keyword">instanceof</span> <span class="token class-name">Map</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> tmp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// 做缓存</span>
+    cached<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span>
+    <span class="token comment">// 遍历Map类型的obj</span>
+    <span class="token comment">// 或者使用forEach()方法来遍历，是map和set独有的</span>
+    <span class="token comment">// obj.forEach((val,key)=&gt;{tmp.set(deepClone(key), deepClone(val))})</span>
+    <span class="token comment">// 因为map的key和val是有可能是引用数据类型的，所以这里需要递归的调用</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> <span class="token punctuation">[</span>k<span class="token punctuation">,</span> v<span class="token punctuation">]</span> <span class="token keyword">of</span> obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      tmp<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token function">deepClone</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> tmp
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 判断Set类型</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token keyword">instanceof</span> <span class="token class-name">Set</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> tmp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// 做缓存</span>
+    cached<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span>
+    <span class="token comment">// 遍历Set类型的obj</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> v <span class="token keyword">of</span> obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      tmp<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token function">deepClone</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> tmp
+  <span class="token punctuation">}</span>
+  <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 数组和对象 {} []  new Object || Array() obj.constructor</span>
+    <span class="token keyword">let</span> tmp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">obj<span class="token punctuation">.</span>constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    cached<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span>
+    <span class="token comment">// 遍历数组或对象</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      tmp<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> tmp
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> clonedObj <span class="token operator">=</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;deepClone之后&quot;</span><span class="token punctuation">,</span> clonedObj<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">9/28/2022, 10:55:25 AM</span></div></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-53a0471f></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div></div><canvas id="vuepress-canvas-cursor"></canvas><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:-1;" data-v-248d85d6></canvas></div><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="https://music.163.com/song/media/outer/url?id=25706282" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:200px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="http://p1.music.126.net/Eef2K2KV9dT3XUA6_Ve-Rw==/109951165543196748.jpg?param=130y130" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:1rem;bottom:1rem;z-index:99999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(http://p1.music.126.net/Eef2K2KV9dT3XUA6_Ve-Rw==/109951165543196748.jpg?param=130y130);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>夜空中最亮的星</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>逃跑计划</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div><!----></div></div>
+    <script src="/assets/js/app.18db920d.js" defer></script><script src="/assets/js/6.9d1223ac.js" defer></script><script src="/assets/js/19.19239efa.js" defer></script><script src="/assets/js/14.ff13c764.js" defer></script>
+  </body>
+</html>
