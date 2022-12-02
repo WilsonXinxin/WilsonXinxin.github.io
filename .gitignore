@@ -2,6 +2,7 @@
 node_modules
 # 忽略除了 vuepress-theme-reco 文件夹外的所有文件
 # !**/node_modules/vuepress-theme-reco
+dist
 
 # local env files
 .env.local

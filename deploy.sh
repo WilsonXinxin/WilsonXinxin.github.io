@@ -13,8 +13,8 @@ set -e
 
 # 生成静态文件
 yarn build
-git add .
-git commit -m'publish gh-pages'
+# git add .
+# git commit -m'publish gh-pages'
 
 # https://gist.github.com/cobyism/4730490
 # 发布到子分支 
