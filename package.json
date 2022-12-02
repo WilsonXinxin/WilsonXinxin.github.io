@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "vuepress dev blog/. --open --host \"localhost\"",
 		"build": "vuepress build blog/.",
-		"publish": "deploy.sh"
+		"publish": "deploy.sh dist"
 	},
 	"devDependencies": {
 		"@vuepress-reco/vuepress-plugin-kan-ban-niang": "^1.0.5",

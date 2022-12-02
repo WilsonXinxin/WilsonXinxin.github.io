@@ -25,7 +25,7 @@ then
   exit 1
 fi
 # 发布到子分支 
-git subtree push --prefix $1 github gh-pages
+git subtree push --prefix $1 origin gh-pages
 
 # 如果发布到 https://<USERNAME>.github.io  USERNAME=你的用户名 
 # git push -f https://github.com/WilsonXinxin/WilsonXinxin.github.io.git master
@@ -33,4 +33,3 @@ git subtree push --prefix $1 github gh-pages
 # 如果发布到 https://<USERNAME>.github.io/<REPO>  REPO=github上的项目
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
 
-# cd -
