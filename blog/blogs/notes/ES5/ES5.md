@@ -14,7 +14,7 @@ categories:
 
 <!-- more  正文部分 -->
 
-# ES5 对方的的地方地方的的的 d
+# ES5
 
 > ECMAScript 5 最早引入了“严格模式”（strict mode）的概念。通过严格模式，可以在函数内部存在的错误，及时捕获一些可能导致编程错误的 ECMAScript 行为。
 > 理解严格模式的规则非常重要，ECMAScript 的下一个版本将以严格模式为基础制定。支持严格模式的浏览器包括 IE10+、Firefox 4+、Safari 5.1+和 Chrome
