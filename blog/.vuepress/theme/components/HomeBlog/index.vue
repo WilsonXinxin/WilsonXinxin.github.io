@@ -55,9 +55,9 @@
           </p>
         </ModuleTransition>
         <!-- 动态下拉 -->
-        <a href="#anchor" class="anchorContainer scroll-down bounce-enter-active down-arrow">
+        <!-- <a href="#anchor" class="anchorContainer scroll-down bounce-enter-active down-arrow">
           <img class="anchorImg" :src="anchorImageUrl" alt="anchor" />
-        </a>
+        </a> -->
       </div>
       <!-- 气泡效果结构 -->
       <div id="bubbles" class="bubblesContainer">

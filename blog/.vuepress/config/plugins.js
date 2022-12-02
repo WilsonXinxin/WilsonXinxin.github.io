@@ -35,31 +35,31 @@ module.exports = [
   ],
 
   // 添加动态标题的插件  https://github.com/moefyit/vuepress-plugin-dynamic-title
-  [
-    'vuepress-plugin-dynamic-title',
-    {
-      showIcon: '/favicon.ico',
-      showText: '(/≧▽≦/)花园朵朵开~',
-      hideIcon: '/failure.ico',
-      hideText: '(●—●) oh No！不要走！',
-      recoverTime: 2000,
-    }
-  ],
+  // [
+  //   'vuepress-plugin-dynamic-title',
+  //   {
+  //     showIcon: '/favicon.ico',
+  //     showText: '(/≧▽≦/)花园朵朵开~',
+  //     hideIcon: '/failure.ico',
+  //     hideText: '(●—●) oh No！不要走！',
+  //     recoverTime: 2000,
+  //   }
+  // ],
 
   //光标效果的插件 https://github.com/moefyit/vuepress-plugin-cursor-effects
-  [
-    'vuepress-plugin-cursor-effects',
+  // [
+  //   'vuepress-plugin-cursor-effects',
     // {
     //     size: 2, // size of the particle, default: 2
     //     shape: ['star' | 'circle'], // shape of the particle, default: 'star'
     //     zIndex: 999999999, // z-index property of the canvas, default: 999999999
     // }
-  ],
+  // ],
 
   // 气泡效果的插件 https://github.com/chenxuan0000/vue-canvas-effect/blob/master/document/README.md
-  [
+  // [
     // 'vue-canvas-effect'
-  ],
+  // ],
 
   // 背景樱花特效 https://github.com/JabinPeng/vuepress-plugin-sakura
   [
